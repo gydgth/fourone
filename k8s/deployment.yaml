@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: okmi2t
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: okmi2t
+  template:
+    metadata:
+      labels:
+        app: okmi2t
+    spec:
+      containers:
+      - image: okteto.dev/okmi2t:latest
+        name: okmi2t
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/ripienaar/free-for-dev/archive/master.zip"
+        - name: ParameterSSENCYPT
+          value: "chacha20-ietf-poly1305"
+        - name: Vless_UUID
+          value: "5386f322-65a4-4c15-bff2-2aaab9747079"
+        - name: Vless_Path
+          value: "/5386f322-65a4-4c15-bff2-2aaab9747079-vless"
+        - name: Vmess_UUID
+          value: "5386f322-65a4-4c15-bff2-2aaab9747079"
+        - name: Vmess_Path
+          value: "/5386f322-65a4-4c15-bff2-2aaab9747079-vmess"
+        - name: Trojan_UUID
+          value: "5386f322-65a4-4c15-bff2-2aaab9747079"
+        - name: Trojan_Path
+          value: "/5386f322-65a4-4c15-bff2-2aaab9747079-trojan"
+        - name: SS_UUID
+          value: "5386f322-65a4-4c15-bff2-2aaab9747079"
+        - name: SS_Path
+          value: "/5386f322-65a4-4c15-bff2-2aaab9747079-ss"
+        - name: Share_Path
+          value: "/5386f322-65a4-4c15-bff2-2aaab9747079-share"
